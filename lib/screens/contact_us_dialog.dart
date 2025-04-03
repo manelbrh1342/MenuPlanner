@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ContactUsDialog extends StatelessWidget {
   // Fonction pour ouvrir l'application de messagerie
   Future<void> _launchEmail() async {
-    final Uri emailLaunchUri = Uri.parse("mailto:meriembzm013@gmail.com");
+    final Uri emailLaunchUri = Uri.parse("mailto:menuplanner123@gmail.com");
 
     try {
       if (await canLaunchUrl(emailLaunchUri)) {
@@ -30,7 +30,7 @@ class ContactUsDialog extends StatelessWidget {
             Text(
               "Contact Us",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF02197D),
               ),
@@ -39,25 +39,32 @@ class ContactUsDialog extends StatelessWidget {
             Center(
               child: Text(
                 "If you have any questions or need assistance, feel free to contact us at:",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey[700]),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(height: 10),
             GestureDetector(
               onTap: _launchEmail,
-              child: Text(
-                "Email: meriembzm013@gmail.com",
-                style: TextStyle(color: Colors.blue),
-                textAlign: TextAlign.center,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.email, color: Colors.blue),
+                  SizedBox(width: 5),
+                  Text(
+                    "menuplanner123@gmail.com",
+                    style: TextStyle(color: Colors.blue),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              style: ElevatedButton.styleFrom(
+              style: TextButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(

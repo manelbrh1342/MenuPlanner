@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart'; // Assure-toi que la page de login est bien importée
 
 class LogoutDialog extends StatelessWidget {
   // Fonction pour gérer l'action de déconnexion
   void _logout(BuildContext context) {
     // Logique de déconnexion ici (par exemple, suppression des données utilisateur, redirection, etc.)
-    // Pour l'instant, on va juste fermer la boîte de dialogue.
     Navigator.pop(context); // Fermer le dialog
-    // Ajoute ici ta logique de déconnexion (par exemple, appel à FirebaseAuth.signOut(), etc.)
+
+    // Remplace la page actuelle par la page de login
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()), // Remplace LoginPage par ta page de login
+    );
   }
 
   @override
@@ -22,7 +27,7 @@ class LogoutDialog extends StatelessWidget {
             Text(
               "Confirm Logout",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF02197D),
               ),
@@ -30,7 +35,7 @@ class LogoutDialog extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               "Are you sure you want to log out?",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey[700]),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
@@ -38,31 +43,31 @@ class LogoutDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Bouton de confirmation de déconnexion
-                ElevatedButton(
+                ElevatedButton.icon(
                   onPressed: () => _logout(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  child: Text("Yes"),
+                  label: Text("Yes"),
                 ),
-                SizedBox(width: 20),
+                SizedBox(width: 25),
                 // Bouton d'annulation
-                ElevatedButton(
+                TextButton.icon(
                   onPressed: () {
                     Navigator.pop(context); // Fermer la boîte de dialogue sans rien faire
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
-                    foregroundColor: Colors.white,
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 172, 183, 214),
+                    foregroundColor: const Color.fromARGB(255, 249, 249, 249),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  child: Text("No"),
+                  label: Text("No"),
                 ),
               ],
             ),

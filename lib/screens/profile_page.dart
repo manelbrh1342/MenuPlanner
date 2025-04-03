@@ -90,9 +90,9 @@ class ProfilePage extends StatelessWidget {
 // Fonction pour afficher la fenêtre modale
 void showEditProfileDialog(BuildContext context) {
   // Valeurs par défaut pour les champs
-  String defaultName = "John Doe";
+  String defaultName = "John Carteer";
   String defaultGender = "Male";
-  String defaultEmail = "john.doe@example.com";
+  String defaultEmail = "john.Carteer@example.com";
 
   showDialog(
     context: context,

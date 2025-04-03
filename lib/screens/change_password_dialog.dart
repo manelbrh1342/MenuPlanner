@@ -12,6 +12,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
   bool _obscureOldPassword = true;
   bool _obscureNewPassword = true;
   bool _obscureConfirmPassword = true;
+  String _errorMessage = ''; // Variable pour stocker le message d'erreur
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +34,10 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                 Text(
                   "Change Password",
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF02197D).withOpacity(0.8)),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF02197D).withOpacity(0.8),
+                  ),
                 ),
                 SizedBox(height: 10),
                 _buildPasswordField(
@@ -43,28 +45,48 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                   _oldPasswordController,
                   _obscureOldPassword,
                   () => setState(() => _obscureOldPassword = !_obscureOldPassword),
-                  Icons.key_off, // Icône pour le mot de passe actuel
-                  hasBorder: false, // Suppression de la bordure sous ce champ
+                  Icons.key_off, 
+                  hasBorder: false, // Pas de bordure sous ce champ
                 ),
                 _buildPasswordField(
                   "New Password",
                   _newPasswordController,
                   _obscureNewPassword,
                   () => setState(() => _obscureNewPassword = !_obscureNewPassword),
-                  Icons.key, // Icône pour le nouveau mot de passe
-                  hasBorder: false, // Suppression de la bordure sous ce champ
+                  Icons.key, 
+                  hasBorder: false, // Pas de bordure sous ce champ
                 ),
                 _buildPasswordField(
                   "Confirm Password",
                   _confirmPasswordController,
                   _obscureConfirmPassword,
                   () => setState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
-                  Icons.check, // Icône pour confirmer le mot de passe
-                  hasBorder: false, // Suppression de la bordure sous ce champ
+                  Icons.check, 
+                  hasBorder: false, // Pas de bordure sous ce champ
                 ),
+                if (_errorMessage.isNotEmpty) // Affiche le message d'erreur si besoin
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Text(
+                      _errorMessage,
+                      style: TextStyle(color: Colors.red, fontSize: 14),
+                    ),
+                  ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    // Vérification des mots de passe
+                    if (_newPasswordController.text != _confirmPasswordController.text) {
+                      setState(() {
+                        _errorMessage = 'New Password and Confirm Password do not match';
+                      });
+                    } else {
+                      setState(() {
+                        _errorMessage = ''; // Réinitialiser l'erreur si tout est correct
+                      });
+                      Navigator.pop(context);
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
@@ -96,10 +118,10 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Color(0x990013AD)), // Icône pour le champ
+          prefixIcon: Icon(icon, color: Color(0x990013AD)),
           labelText: label,
           labelStyle: TextStyle(color: Color(0xFFACA6A6).withOpacity(0.53)),
-          // Suppression de la bordure si `hasBorder` est false
+          // Suppression de la bordure sous ce champ si `hasBorder` est false
           border: hasBorder 
               ? UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.white.withOpacity(0.7), width: 1.8),
@@ -114,7 +136,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
             icon: Icon(
               obscureText ? Icons.visibility_off : Icons.visibility,
               color: Colors.grey,
-              size: 20, // Taille de l'icône
+              size: 20,
             ),
             onPressed: toggleVisibility,
           ),

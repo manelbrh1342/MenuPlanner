@@ -34,12 +34,16 @@ class _LanguageDialogState extends State<LanguageDialog> {
                   ),
                 ),
                 SizedBox(height: 20),
-                _buildLanguageOption("English"),
-                _buildLanguageOption("French"),
-                _buildLanguageOption("Arabic"),
+                _buildLanguageOption("English", Icons.language),
+                _buildLanguageOption("French", Icons.language),
+                _buildLanguageOption("Arabic", Icons.language),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    // Optionally save the language choice (using shared preferences or state management)
+                    _showLanguageSavedMessage(context);
+                    Navigator.pop(context);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
@@ -64,7 +68,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
     );
   }
 
-  Widget _buildLanguageOption(String language) {
+  Widget _buildLanguageOption(String language, IconData icon) {
     return ListTile(
       title: Text(language, style: TextStyle(color: Colors.black)),
       trailing: _selectedLanguage == language
@@ -76,5 +80,10 @@ class _LanguageDialogState extends State<LanguageDialog> {
         });
       },
     );
+  }
+
+  // Fonction pour afficher un message de confirmation
+  void _showLanguageSavedMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Language changed to $_selectedLanguage')));
   }
 }

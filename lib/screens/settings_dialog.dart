@@ -18,7 +18,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -66,58 +66,62 @@ class _SettingsDialogState extends State<SettingsDialog> {
   }
 
   Widget _buildNotificationOption() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          children: [
-            Icon(Icons.notifications, color: Color(0x990013AD), size: 24),
-            SizedBox(width: 10),
-            Text("Notifications"),
-          ],
-        ),
-        Transform.scale(
-          scale: 0.7,
-          child: Switch(
-            value: _notificationsEnabled,
-            activeColor: Color.fromARGB(255, 22, 50, 175),
-            onChanged: (value) {
-              setState(() {
-                _notificationsEnabled = value;
-              });
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.notifications, color: Color(0x990013AD), size: 24),
+              SizedBox(width: 10),
+              Text("Notifications", style: TextStyle(fontSize: 16)),
+            ],
           ),
-        ),
-      ],
+          Transform.scale(
+            scale: 0.7,
+            child: Switch(
+              value: _notificationsEnabled,
+              activeColor: Color.fromARGB(255, 22, 50, 175),
+              onChanged: (value) {
+                setState(() {
+                  _notificationsEnabled = value;
+                });
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildAutoUpdateOption() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(Icons.update, color: Color(0x990013AD), size: 24),
-          SizedBox(width: 10),
-          Text("Mise à jour automatique"),
+          Row(
+            children: [
+              Icon(Icons.update, color: Color(0x990013AD), size: 24),
+              SizedBox(width: 10),
+              Text("Mise à jour automatique", style: TextStyle(fontSize: 16)),
+            ],
+          ),
+          Transform.scale(
+            scale: 0.7, 
+            child: Switch(
+              value: _autoUpdateEnabled,
+              activeColor: Color.fromARGB(255, 22, 50, 175),
+              onChanged: (value) {
+                setState(() {
+                  _autoUpdateEnabled = value;
+                });
+              },
+            ),
+          ),
         ],
       ),
-      Transform.scale(
-        scale: 0.7, // Ajuste la taille du Switch ici, 1.0 étant la taille originale
-        child: Switch(
-          value: _autoUpdateEnabled,
-          activeColor: Color.fromARGB(255, 22, 50, 175),
-          onChanged: (value) {
-            setState(() {
-              _autoUpdateEnabled = value;
-            });
-          },
-        ),
-      ),
-    ],
-  );
-}
+    );
+  }
 }
