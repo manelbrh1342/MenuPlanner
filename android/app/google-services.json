@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "95759348559",
+    "project_id": "menuplanner-ee8a0",
+    "storage_bucket": "menuplanner-ee8a0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95759348559:android:66fd96b286a4b27773cb3a",
+        "android_client_info": {
+          "package_name": "com.example.menuplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95759348559-aa1aqhgk5e6uv1pbk28nkh0trnc1glum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.menuplanner",
+            "certificate_hash": "ab4255110411f50715b808adadb2677f9da23bdc"
+          }
+        },
+        {
+          "client_id": "95759348559-ii86dhj9j80iuokn2qkuvsf9ql3kkci8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj6RWm5sbly5VOVnl3WEXACRY_eNsnl4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95759348559-ii86dhj9j80iuokn2qkuvsf9ql3kkci8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "95759348559-9pgjbtph4fj32k0507rjoq8dijlvfso0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.menuPlanner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

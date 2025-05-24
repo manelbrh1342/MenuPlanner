@@ -1,0 +1,1 @@
+{"firestore":{"rules":"firestore.rules","indexes":"firestore.indexes.json"},"storage":{"rules":"storage.rules"},"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"menuplanner-ee8a0","configurations":{"macos":"1:95759348559:ios:0e9acd8ac67cf35573cb3a","web":"1:95759348559:web:1b9e2892f3da467173cb3a","windows":"1:95759348559:web:7a0fb4644d9618fb73cb3a"}}}}}}
